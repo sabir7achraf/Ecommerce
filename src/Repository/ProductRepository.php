@@ -24,13 +24,12 @@ class ProductRepository extends ServiceEntityRepository
     //    /**
     //     * @return Product[] Returns an array of Product objects
     //     */
-      public function findByExampleField($value): array
+      public function findByExampleField($id): array
       {
            return $this->createQueryBuilder('p')
-               ->Where('p.price = :val')
-               ->setParameter('val', $value)
-              ->orderBy('p.id', 'ASC')
-             ->setMaxResults(10)
+               ->Where('p.id = :val')
+               ->setParameter('val', $id)
+             ->setMaxResults(1)
                ->getQuery()
                ->getResult()
          ;

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}Hello PanierControleController!{% endblock %}
+{% block body %}
+<div class="row">
+    {% for donnee in product %}
+    <div class="col" >
+        <img src="{{asset('uploads/images/'~donnee.image)}}" class="main-product-image" alt="produit1" id="tswira">
+    </div>
+    <div class="col" id="lktba">
+        <p id="title">
+            {{ donnee.nameProduct }}
+        </p>
+        <p id="price">
+            ${{ donnee.price }} <del id="del">$105</del>
+        </p>
+        <hr>
+        <div class="product-images">
+            <img src="{{asset('uploads/images/'~donnee.image2)}}" class="product-image" alt="Image 1" >
+            <img src="{{asset('uploads/images/'~donnee.image3)}}" alt="Image 2" class="product-image">
+            <img src="{{asset('uploads/images/'~donnee.image)}}" alt="Image 2" class="product-image">
+
+            <!-- Ajoutez d'autres images si nécessaire -->
+        </div>
+        <a class="btn btn-outline-danger" href="{{path('app_ordres_controle',{id:donnee.id})}}" id="">Ajouter au panier</a>
+    </div>
+    {% endfor %}
+</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const productImages = document.querySelectorAll('.product-image');
+            const mainProductImage = document.querySelector('.main-product-image');
+
+            productImages.forEach(function(image) {
+                image.addEventListener('mouseenter', function() {
+                    mainProductImage.src = image.src;
+                    mainProductImage.alt = image.alt;
+                });
+            });
+        });
+    </script>
+{% endblock  body%}

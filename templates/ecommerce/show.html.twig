@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'ecommerce: ' ~slug %}
+
+{% block content %}
+{{slug}}
+{{id}}
+{{html | raw}} {# raw a partient a des filters tu peut le check dans twig docs #}
+
+{% endblock %}

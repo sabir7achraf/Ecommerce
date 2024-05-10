@@ -24,17 +24,17 @@ class OrdresRepository extends ServiceEntityRepository
     //    /**
     //     * @return Ordres[] Returns an array of Ordres objects
     //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('o')
-    //            ->andWhere('o.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('o.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+        public function findByExampleField($value): array
+        {
+         return $this->createQueryBuilder('o')
+               ->andWhere('o.reference = :val')
+               ->setParameter('val', $value)
+               ->orderBy('o.id', 'ASC')
+             ->setMaxResults(200)
+              ->getQuery()
+               ->getResult()
+           ;
+       }
 
     //    public function findOneBySomeField($value): ?Ordres
     //    {

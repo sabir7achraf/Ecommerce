@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HomePage{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <a class="btn" href="{{url('home')}}" id="buy">BUY NOW</a>
+</div>
+    <div class="row">
+        {% for donnee in donnees %}
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src="{{asset('uploads/images/'~donnee.image)}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ donnee.nameProduct  }} </h5>
+                    <p class="card-text">{{ donnee.typeProduct }}
+                    <p id="price">
+                        ${{ donnee.price}} <del id="del">$1005</del>
+                    </p>
+                    </p>
+                    <a href="{{path('app_panier_controle',{id:donnee.id})}}" class="btn btn-primary">buyNow</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock  body%}

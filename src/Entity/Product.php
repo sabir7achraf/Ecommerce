@@ -33,10 +33,23 @@ class Product
     #[ORM\OneToMany(targetEntity: Images::class, mappedBy: 'img_fk')]
     private Collection $images;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
+    #[ORM\OneToMany(targetEntity: Ordres::class, mappedBy: 'Product_id')]
+    private Collection $ordres;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image2 = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image3 = null;
+
     public function __construct()
     {
         $this->fk_product = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->ordres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -149,6 +162,72 @@ class Product
                 $image->setImgFk(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Ordres>
+     */
+    public function getOrdres(): Collection
+    {
+        return $this->ordres;
+    }
+
+    public function addOrdre(Ordres $ordre): static
+    {
+        if (!$this->ordres->contains($ordre)) {
+            $this->ordres->add($ordre);
+            $ordre->setProductId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrdre(Ordres $ordre): static
+    {
+        if ($this->ordres->removeElement($ordre)) {
+            // set the owning side to null (unless already changed)
+            if ($ordre->getProductId() === $this) {
+                $ordre->setProductId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getImage2(): ?string
+    {
+        return $this->image2;
+    }
+
+    public function setImage2(?string $image2): static
+    {
+        $this->image2 = $image2;
+
+        return $this;
+    }
+
+    public function getImage3(): ?string
+    {
+        return $this->image3;
+    }
+
+    public function setImage3(?string $image3): static
+    {
+        $this->image3 = $image3;
 
         return $this;
     }

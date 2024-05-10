@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Orders Admin{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="card mt-5">
+            <div class="card-header">
+                Orders LIST
+            </div>
+            <div class="card-body">
+                <table class="table table-dark table-striped"  id="table">
+                    <thead>
+                    <tr>
+                        <th>situation</th>
+                        <th>Item</th>
+                        <th>price</th>
+                        <th>categorie</th>
+                        <th>image</th>
+                        <th>id client </th>
+                        <th> validations </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in ordres %}
+                        <tr>
+                            <td> {{ order.reference }}</td>
+                        {% for product in order.products %}
+                            <td>{{ product.nameProduct }}</td>
+                            <td>{{ product.price}} DH</td>
+                            <td>{{ product.typeProduct}}</td>
+                            <td><img src="{{asset('uploads/images/'~product.image)}}" alt="{{ product.image }}" height="90px" width="90px"></td>
+                        {% endfor  %}
+                            <td>  {{order.user.email}}</td>
+                            <td> <a href="{{ path('app_ordres_admin_valider',{id:order.id}) }}" class="btn btn-outline-warning">valider</a></td>
+                        </tr>
+                    {% endfor  %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

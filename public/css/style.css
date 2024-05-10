@@ -1,0 +1,80 @@
+.example-wrapper{
+   background-image:url("https://www.titleboxing.com/cdn/shop/files/Hero-Shopify_-_Best_Sellers_2400x.jpg?v=1714155314");
+   background-repeat: repeat;
+   background-size:cover;
+   margin-bottom: 25px;
+   justify-content: center;
+   width: 1520px;
+   height: 600px;
+}
+#buy{
+   position: relative;
+   top: 220px;
+   left: 520px;
+   color: #d63384;
+   font-size: 100px;
+   border: 2px solid #d63384;
+   border-radius: 4px;
+   cursor: pointer;
+   padding: 8px 16px;
+}
+#buy:hover {
+   background-color: rgba(255, 255, 255, 0.5); /* Changement de couleur de fond au survol */
+   border-color: #d63384; /* Changement de couleur de la bordure au survol */
+}
+.nav-item{
+   font-size: 25px;
+}
+.navbar-brand{
+   font-size: 25px;
+   color: rgba(218, 18, 69, 0.84);
+}
+.container{
+   margin-top: 60px;
+   border: 1px solid;
+   border-radius: 4px;
+   box-shadow: 0px 0px 8px  rgba(200, 7, 65, 0.8);
+}
+#table{
+   margin-top: 20px ;
+}
+#add{
+   position: relative;
+   left:1000px;
+}
+#lktba{
+   border: solid 2px;
+   width: 500px;
+   height:500px;
+}
+#title{
+   font-size: 35px;
+   font-weight: bold;
+}
+#price{
+   font-size: 19px;
+   color: rgba(211, 19, 93, 0.9);
+   font-weight: bold;
+}
+#del{
+   color: rgba(97, 86, 86, 0.2);
+}
+#tswira{
+   width: 500px;
+   height:500px;
+}
+.dropdown {
+   position: relative;
+   left:600px;
+}
+.product-images {
+   display: flex;
+   /* Assurez-vous que les images s'affichent horizontalement */
+}
+.product-image {
+   width: 60px; /* Ajustez selon vos besoins */
+   height: auto; /* Pour conserver le ratio hauteur-largeur */
+   margin-right: 10px; /* Espacement entre les images */
+   cursor: pointer; /* Curseur indiquant qu'il y a une interaction possible */
+   margin-bottom: 30px;
+}

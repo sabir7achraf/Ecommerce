@@ -15,17 +15,19 @@ class Ordres
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $user_id = null;
-
     #[ORM\Column(length: 255)]
     private ?string $reference = null;
 
     #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'fk_product')]
     private Collection $products;
 
-    #[ORM\ManyToOne(inversedBy: 'user')]
-    private ?Users $users = null;
+    #[ORM\ManyToOne(inversedBy: 'ordres')]
+    private ?Product $Product_id = null;
+
+    #[ORM\ManyToOne(inversedBy: 'ordres')]
+    private ?User $user = null;
+
+
 
     public function __construct()
     {
@@ -36,19 +38,6 @@ class Ordres
     {
         return $this->id;
     }
-
-    public function getUserId(): ?int
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(int $user_id): static
-    {
-        $this->user_id = $user_id;
-
-        return $this;
-    }
-
     public function getReference(): ?string
     {
         return $this->reference;
@@ -88,14 +77,26 @@ class Ordres
         return $this;
     }
 
-    public function getUsers(): ?Users
+    public function getProductId(): ?Product
     {
-        return $this->users;
+        return $this->Product_id;
     }
 
-    public function setUsers(?Users $users): static
+    public function setProductId(?Product $Product_id): static
     {
-        $this->users = $users;
+        $this->Product_id = $Product_id;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
